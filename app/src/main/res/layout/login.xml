@@ -1,90 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3F51B5"
-    tools:context=".MainActivity">
+    android:fillViewport="true">
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="0dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/login"
-        app:layout_constraintEnd_toEndOf="@+id/txtPassword"
-        app:layout_constraintStart_toStartOf="@+id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3F51B5"
+        tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/txtUser"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:textColor="#E4CDCD"
-        android:backgroundTint="#E4CDCD"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.105"
-        tools:targetApi="lollipop" />
-    <EditText
-        android:id="@+id/txtPassword"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:textColor="#E4CDCD"
-        android:backgroundTint="#E4CDCD"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/txtUser"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtUser"
-        app:layout_constraintTop_toBottomOf="@+id/txtUser"
-        app:layout_constraintVertical_bias="0.0" tools:targetApi="lollipop" />
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/login"
+            app:layout_constraintEnd_toEndOf="@+id/txtPassword"
+            app:layout_constraintStart_toStartOf="@+id/txtPassword"
+            app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
-    <TextView
-        android:id="@+id/lblUser"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="@string/user"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#E4CDCD"
-        android:textSize="20sp"
-        android:hint="@id/txtUser"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/txtUser"
-        app:layout_constraintHorizontal_bias="0.46"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.105" tools:targetApi="lollipop" />
+        <EditText
+            android:id="@+id/txtUser"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#E4CDCD"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:textColor="#E4CDCD"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.867"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.364"
+            tools:targetApi="lollipop" />
 
-    <TextView
-        android:id="@+id/lblPassword"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:gravity="center"
-        android:hint="@id/txtPassword"
-        android:text="@string/password"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#E4CDCD"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/lblUser"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/lblUser"
-        app:layout_constraintTop_toBottomOf="@+id/lblUser"
-        app:layout_constraintVertical_bias="0.064" />
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#E4CDCD"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:textColor="#E4CDCD"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtUser"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txtUser"
+            app:layout_constraintTop_toBottomOf="@+id/txtUser"
+            app:layout_constraintVertical_bias="0.0"
+            tools:targetApi="lollipop" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/lblUser"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:hint="@id/txtUser"
+            android:text="@string/usuario"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#E4CDCD"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txtUser"
+            app:layout_constraintHorizontal_bias="0.46"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.364"
+            tools:targetApi="lollipop" />
+
+        <TextView
+            android:id="@+id/lblPassword"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:hint="@id/txtPassword"
+            android:text="@string/password"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#E4CDCD"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/lblUser"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/lblUser"
+            app:layout_constraintTop_toBottomOf="@+id/lblUser"
+            app:layout_constraintVertical_bias="0.064" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
