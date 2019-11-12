@@ -1,11 +1,16 @@
 package com.example.agendaynpi;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 public class Login extends AppCompatActivity {
 
@@ -36,13 +41,25 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    private void cambioDeUsuario(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        //builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
-
-// 3. Get the <code><a href="/reference/android/app/AlertDialog.html">AlertDialog</a></code> from <code><a href="/reference/android/app/AlertDialog.Builder.html#create()">create()</a></code>
-        AlertDialog dialog = builder.create();
+    public class Registro extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(final Bundle savedInstanceState) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            final LayoutInflater inflater = this.getLayoutInflater();
+            builder.setView(inflater.inflate(R.layout.registro, null))
+                    .setPositiveButton(R.string.registrarse, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            EditText campo = (EditText) getDialog().findViewById(R.id.txtUsuarioLogin);
+                            editor.putString("usuario", String.valueOf(campo.getText()));
+                        }
+                    })
+                    .setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Registro.this.getDialog().cancel();
+                        }
+                    });
+            return builder.create();
+        }
     }
-
 }

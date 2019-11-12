@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:src="@drawable/header_logo"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:scaleType="center"
-        android:background="#FFFFBB33"
-        android:contentDescription="@string/app_name" />
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="380dp"
+    android:layout_height="180dp">
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/txtUsuarioRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:hint="@string/usuario"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/txtContrasenyaRegistro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/txtContrasenyaRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="44dp"
         android:fontFamily="sans-serif"
         android:hint="@string/contrasenya"
-        android:inputType="textPassword" />
-</LinearLayout>
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txtUsuarioRegistro"
+        app:layout_constraintStart_toStartOf="@+id/txtUsuarioRegistro"
+        android:importantForAutofill="no" tools:targetApi="jelly_bean" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

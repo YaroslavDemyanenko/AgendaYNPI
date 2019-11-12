@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#3F51B5"
         tools:context=".MainActivity">
 
@@ -20,12 +20,12 @@
             android:layout_height="54dp"
             android:layout_marginTop="36dp"
             android:text="@string/login"
-            app:layout_constraintEnd_toEndOf="@+id/txtPassword"
-            app:layout_constraintStart_toStartOf="@+id/txtPassword"
-            app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+            app:layout_constraintEnd_toEndOf="@+id/txtContrasenyaLogin"
+            app:layout_constraintStart_toStartOf="@+id/txtContrasenyaLogin"
+            app:layout_constraintTop_toBottomOf="@+id/txtContrasenyaLogin" />
 
         <EditText
-            android:id="@+id/txtUser"
+            android:id="@+id/txtUsuarioLogin"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:backgroundTint="#E4CDCD"
@@ -42,7 +42,7 @@
             tools:targetApi="lollipop" />
 
         <EditText
-            android:id="@+id/txtPassword"
+            android:id="@+id/txtContrasenyaLogin"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_marginTop="36dp"
@@ -52,10 +52,10 @@
             android:inputType="textPassword"
             android:textColor="#E4CDCD"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/txtUser"
+            app:layout_constraintEnd_toEndOf="@+id/txtUsuarioLogin"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/txtUser"
-            app:layout_constraintTop_toBottomOf="@+id/txtUser"
+            app:layout_constraintStart_toStartOf="@+id/txtUsuarioLogin"
+            app:layout_constraintTop_toBottomOf="@+id/txtUsuarioLogin"
             app:layout_constraintVertical_bias="0.0"
             tools:targetApi="lollipop" />
 
@@ -64,13 +64,13 @@
             android:layout_width="120dp"
             android:layout_height="50dp"
             android:gravity="center"
-            android:hint="@id/txtUser"
+            android:hint="@id/txtUsuarioLogin"
             android:text="@string/usuario"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="#E4CDCD"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/txtUser"
+            app:layout_constraintEnd_toStartOf="@+id/txtUsuarioLogin"
             app:layout_constraintHorizontal_bias="0.46"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -84,8 +84,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:gravity="center"
-            android:hint="@id/txtPassword"
-            android:text="@string/password"
+            android:text="@string/contrasenya"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="#E4CDCD"
             android:textSize="20sp"
