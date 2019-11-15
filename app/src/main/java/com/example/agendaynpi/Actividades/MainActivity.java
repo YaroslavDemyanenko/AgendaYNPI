@@ -1,10 +1,12 @@
-package com.example.agendaynpi;
+package com.example.agendaynpi.Actividades;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.agendaynpi.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
     }
 
     public boolean onTouchEvent(MotionEvent eventoTouch) {
@@ -27,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 x2 = eventoTouch.getX();
                 y2 = eventoTouch.getY();
                 if(y1>y2){
-                    Intent intent = new Intent(MainActivity.this,Login.class);
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
                 break;

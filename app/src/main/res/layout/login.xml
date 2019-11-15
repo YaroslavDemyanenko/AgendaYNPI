@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#3F51B5"
-        tools:context=".MainActivity">
+        tools:context=".Actividades.MainActivity">
 
         <Button
             android:id="@+id/btnLogin"
@@ -19,6 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="54dp"
             android:layout_marginTop="36dp"
+            android:onClick="login"
             android:text="@string/login"
             app:layout_constraintEnd_toEndOf="@+id/txtContrasenyaLogin"
             app:layout_constraintStart_toStartOf="@+id/txtContrasenyaLogin"
