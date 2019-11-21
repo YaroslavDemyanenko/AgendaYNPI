@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login);
         this.preferencias = getSharedPreferences("login", Context.MODE_PRIVATE);
         this.editor = preferencias.edit();
-        this.loginAct=this;
+        this.loginAct = this;
     }
 
     public void login(View v) {
@@ -36,16 +36,13 @@ public class LoginActivity extends AppCompatActivity {
         EditText contrasenyaTxt = findViewById(R.id.txtContrasenyaLogin);
         String usuarioIntroducido = usuarioTxt.getText().toString();
         String contrasenyaIntroducida = contrasenyaTxt.getText().toString();
-
         String usuario = preferencias.getString("usuario", "root");
         String contrasenya = preferencias.getString("contrasenya", "admin");
 
         if (usuario.equals(usuarioIntroducido)) {
             if (usuario.equals("root")) {
                 mostrarDialogo(v);
-                pasarASiguente();
-            }
-            if (contrasenya.equals(contrasenyaIntroducida)) {
+            } else if (contrasenya.equals(contrasenyaIntroducida) && !usuario.equals("root")) {
                 Comodin.hideKeyboard(loginAct);
                 pasarASiguente();
             }
@@ -64,8 +61,6 @@ public class LoginActivity extends AppCompatActivity {
         alertDialogBuilder.setView(vistaDialogo);
         final EditText usuarioTxt = vistaDialogo.findViewById(R.id.txtUsuarioRegistro);
         final EditText contrasenyaTxt = vistaDialogo.findViewById(R.id.txtContrasenyaRegistro);
-
-
         alertDialogBuilder.setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -77,10 +72,10 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString("contrasenya", contrasenya);
                             editor.commit();
                             Comodin.hideKeyboard(loginAct);
+                            pasarASiguente();
                         }
                     }
                 });
-
         alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {

@@ -14,4 +14,10 @@
     <string name="tareas">Tareas</string>
     <string name="coste">Coste</string>
     <string name="guardar">Guardar</string>
+    <string-array name="prioridades_array">
+        <item>Urgente</item>
+        <item>Alta</item>
+        <item>Media</item>
+        <item>Baja</item>
+    </string-array>
 </resources>

@@ -1,131 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3F51B5">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/lblTituloListaTareas"
-        android:layout_width="145dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="56dp"
-        android:gravity="center"
-        android:text="@string/tituloCrearTarea"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#E4CDCD"
-        android:textColorHint="#A8E4CDCD"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:targetApi="lollipop" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3F51B5">
 
-    <EditText
-        android:id="@+id/txtTareaNombre"
-        android:layout_width="330dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:backgroundTint="#E4CDCD"
-        android:ems="10"
-        android:hint="@string/nombre"
-        android:inputType="textPersonName"
-        android:textColor="#E4CDCD"
-        android:textColorHint="#A8E4CDCD"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblTituloListaTareas" />
+        <TextView
+            android:id="@+id/lblTituloListaTareas"
+            android:layout_width="145dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="56dp"
+            android:gravity="center"
+            android:text="@string/tituloCrearTarea"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#E4CDCD"
+            android:textColorHint="#A8E4CDCD"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="lollipop" />
 
-    <EditText
-        android:id="@+id/txtTareaDesc"
-        android:layout_width="330dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="@string/descripcion"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/txtTareaNombre"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtTareaNombre"
-        app:layout_constraintTop_toBottomOf="@+id/txtTareaNombre"
-        android:backgroundTint="#E4CDCD"
-        android:textColorHint="#A8E4CDCD"
-        android:textColor="#E4CDCD"/>
+        <EditText
+            android:id="@+id/txtTareaNombre"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="#E4CDCD"
+            android:ems="10"
+            android:hint="@string/nombre"
+            android:inputType="textPersonName"
+            android:textColor="#E4CDCD"
+            android:textColorHint="#A8E4CDCD"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblTituloListaTareas" />
 
-    <EditText
-        android:id="@+id/txtCosteTarea"
-        android:layout_width="330dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#E4CDCD"
-        android:ems="10"
-        android:hint="@string/coste"
-        android:inputType="numberDecimal"
-        android:textColor="#E4CDCD"
-        android:textColorHint="#A8E4CDCD"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerPrioridad"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/calenFecha"
-        app:layout_constraintTop_toBottomOf="@+id/calenFecha" />
+        <EditText
+            android:id="@+id/txtTareaDesc"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#E4CDCD"
+            android:ems="10"
+            android:hint="@string/descripcion"
+            android:inputType="textPersonName"
+            android:textColor="#E4CDCD"
+            android:textColorHint="#A8E4CDCD"
+            app:layout_constraintEnd_toEndOf="@+id/txtTareaNombre"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txtTareaNombre"
+            app:layout_constraintTop_toBottomOf="@+id/txtTareaNombre" />
 
-    <EditText
-        android:id="@+id/calenFecha"
-        android:layout_width="168dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#E4CDCD"
-        android:clickable="true"
-        android:ems="10"
-        android:focusable="false"
-        android:inputType="date"
-        android:maxLines="1"
-        android:onClick="cogerFecha"
-        android:textColor="#E4CDCD"
-        android:textColorHint="#A8E4CDCD"
-        app:layout_constraintStart_toStartOf="@+id/txtTareaDesc"
-        app:layout_constraintTop_toBottomOf="@+id/txtTareaDesc"
-        tools:targetApi="lollipop" />
+        <EditText
+            android:id="@+id/txtCosteTarea"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#E4CDCD"
+            android:ems="10"
+            android:hint="@string/coste"
+            android:inputType="numberDecimal"
+            android:textColor="#E4CDCD"
+            android:textColorHint="#A8E4CDCD"
+            app:layout_constraintEnd_toEndOf="@+id/spinnerPrioridad"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/calenFecha"
+            app:layout_constraintTop_toBottomOf="@+id/calenFecha" />
 
-    <Spinner
-        android:id="@+id/spinnerPrioridad"
-        android:layout_width="149dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@+id/txtTareaDesc"
-        android:backgroundTint="#E4CDCD"
-        android:textColor="#E4CDCD"
-        app:layout_constraintTop_toBottomOf="@+id/txtTareaDesc" />
+        <EditText
+            android:id="@+id/calenFecha"
+            android:layout_width="168dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#E4CDCD"
+            android:clickable="true"
+            android:ems="10"
+            android:focusable="false"
+            android:inputType="date"
+            android:maxLines="1"
+            android:onClick="onClick"
+            android:textColor="#E4CDCD"
+            android:textColorHint="#A8E4CDCD"
+            app:layout_constraintStart_toStartOf="@+id/txtTareaDesc"
+            app:layout_constraintTop_toBottomOf="@+id/txtTareaDesc"
+            tools:targetApi="lollipop" />
 
-    <Button
-        android:id="@+id/btnGuardarNuevaTarea"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginBottom="88dp"
-        android:onClick="guardarTareaEnBd"
-        android:text="@string/guardar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Spinner
+            android:id="@+id/spinnerPrioridad"
+            android:layout_width="149dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#E4CDCD"
+            android:textColor="#E4CDCD"
+            app:layout_constraintEnd_toEndOf="@+id/txtTareaDesc"
+            app:layout_constraintTop_toBottomOf="@+id/txtTareaDesc" />
 
-    <Button
-        android:id="@+id/btnCancelarNuevaTarea"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
-        android:layout_marginBottom="88dp"
-        android:text="@string/cancelar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintStart_toEndOf="@+id/btnGuardarNuevaTarea" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnGuardarNuevaTarea"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginBottom="60dp"
+            android:onClick="guardarTareaEnBd"
+            android:text="@string/guardar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.136"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCosteTarea"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/btnCancelarNuevaTarea"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"
+            android:text="@string/cancelar"
+            app:layout_constraintBottom_toBottomOf="@+id/btnGuardarNuevaTarea"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.78"
+            app:layout_constraintStart_toEndOf="@+id/btnGuardarNuevaTarea"
+            app:layout_constraintTop_toTopOf="@+id/btnGuardarNuevaTarea"
+            app:layout_constraintVertical_bias="0.98" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
