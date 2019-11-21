@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -45,13 +46,15 @@ public class LoginActivity extends AppCompatActivity {
                 pasarASiguente();
             }
             if (contrasenya.equals(contrasenyaIntroducida)) {
+                Comodin.hideKeyboard(loginAct);
                 pasarASiguente();
             }
         }
     }
 
     private void pasarASiguente() {
-
+        Intent intent = new Intent(LoginActivity.this, CrearTareasActivity.class);
+        startActivity(intent);
     }
 
     public void mostrarDialogo(View v) {

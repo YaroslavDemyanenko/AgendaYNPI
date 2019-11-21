@@ -15,13 +15,14 @@
 
         <Button
             android:id="@+id/btnLogin"
-            style="@style/Widget.AppCompat.Button"
+            style="@android:style/Widget.Button.Small"
             android:layout_width="0dp"
             android:layout_height="54dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="172dp"
             android:onClick="login"
             android:text="@string/login"
             app:layout_constraintEnd_toEndOf="@+id/txtContrasenyaLogin"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/txtContrasenyaLogin"
             app:layout_constraintTop_toBottomOf="@+id/txtContrasenyaLogin" />
 
@@ -30,10 +31,10 @@
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:backgroundTint="#E4CDCD"
+            android:textColor="#E4CDCD"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:textColor="#E4CDCD"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.867"
@@ -57,7 +58,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/txtUsuarioLogin"
             app:layout_constraintTop_toBottomOf="@+id/txtUsuarioLogin"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="0.017"
             tools:targetApi="lollipop" />
 
         <TextView
@@ -65,7 +66,6 @@
             android:layout_width="120dp"
             android:layout_height="50dp"
             android:gravity="center"
-            android:hint="@id/txtUsuarioLogin"
             android:text="@string/usuario"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="#E4CDCD"
@@ -82,6 +82,7 @@
             android:id="@+id/lblPassword"
             android:layout_width="120dp"
             android:layout_height="50dp"
+            android:layout_marginTop="36dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:gravity="center"
@@ -94,9 +95,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/lblUser"
             app:layout_constraintTop_toBottomOf="@+id/lblUser"
-            app:layout_constraintVertical_bias="0.064" />
-
-
+            app:layout_constraintVertical_bias="0.017" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 

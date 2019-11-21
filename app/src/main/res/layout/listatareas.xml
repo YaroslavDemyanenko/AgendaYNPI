@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3F51B5">
+
+    <TextView
+        android:id="@+id/lblTituloListaTareas"
+        android:layout_width="145dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="56dp"
+        android:gravity="center"
+        android:text="@string/tareas"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#E4CDCD"
+        android:textColorHint="#A8E4CDCD"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="lollipop" />
+
+    <CheckBox
+        android:id="@+id/cbxHechas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="Hechas"
+        app:layout_constraintBottom_toTopOf="@id/listTareas"
+        app:layout_constraintEnd_toStartOf="@+id/cbxPendientes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblTituloListaTareas"
+        android:textColor="#E4CDCD"
+        android:buttonTint="#E4CDCD"
+        app:layout_constraintVertical_bias="0.508" />
+
+    <CheckBox
+        android:id="@+id/cbxPendientes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="Pendientes"
+        app:layout_constraintBottom_toTopOf="@id/listTareas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cbxHechas"
+        app:layout_constraintTop_toBottomOf="@+id/lblTituloListaTareas"
+        android:textColor="#E4CDCD"
+        android:buttonTint="#E4CDCD"
+        app:layout_constraintVertical_bias="0.508" />
+
+    <ListView
+        android:id="@+id/listTareas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#E4CDCD"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
