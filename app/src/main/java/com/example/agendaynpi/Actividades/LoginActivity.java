@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,21 +39,24 @@ public class LoginActivity extends AppCompatActivity {
         String contrasenyaIntroducida = contrasenyaTxt.getText().toString();
         String usuario = preferencias.getString("usuario", "root");
         String contrasenya = preferencias.getString("contrasenya", "admin");
-
+        Comodin.ocultarTeclado(loginAct);
         if (usuario.equals(usuarioIntroducido)) {
-            if (usuario.equals("root")) {
-                mostrarDialogo(v);
-            } else if (contrasenya.equals(contrasenyaIntroducida) && !usuario.equals("root")) {
-                Comodin.hideKeyboard(loginAct);
-                pasarASiguente();
+            if (contrasenya.equals(contrasenyaIntroducida) && !usuario.equals("root")) {
+
+                pasarA(MenuPrincipalActivity.class);
+            } else {
+                Toast.makeText(this, "Datos incorrectos", Toast.LENGTH_LONG);
             }
+        } else {
+            Toast.makeText(this, "Datos incorrectos", Toast.LENGTH_LONG);
         }
     }
 
-    private void pasarASiguente() {
-        Intent intent = new Intent(LoginActivity.this, CrearTareasActivity.class);
+    private void pasarA(Class clase) {
+        Intent intent = new Intent(LoginActivity.this, clase);
         startActivity(intent);
     }
+
 
     public void mostrarDialogo(View v) {
         LayoutInflater li = LayoutInflater.from(v.getContext());
@@ -71,8 +75,8 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString("usuario", usuario);
                             editor.putString("contrasenya", contrasenya);
                             editor.commit();
-                            Comodin.hideKeyboard(loginAct);
-                            pasarASiguente();
+                            Comodin.ocultarTeclado(loginAct);
+                            pasarA(MenuPrincipalActivity.class);
                         }
                     }
                 });

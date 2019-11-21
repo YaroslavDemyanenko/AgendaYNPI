@@ -29,9 +29,9 @@ public class CrearTareasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creartarea);
         txtNombre = findViewById(R.id.txtTareaNombre);
-        txtDesc = findViewById(R.id.txtTareaDesc);
-        txtCoste = findViewById(R.id.txtCosteTarea);
-        calenFecha = findViewById(R.id.calenFecha);
+        txtDesc = findViewById(R.id.lblDescripcionTarea);
+        txtCoste = findViewById(R.id.lblCosteTarea);
+        calenFecha = findViewById(R.id.lblFechaTarea);
 
         final Calendar calendario = Calendar.getInstance();
         ultimoAnio = calendario.get(Calendar.YEAR);
@@ -77,7 +77,7 @@ public class CrearTareasActivity extends AppCompatActivity {
         String fecha = calenFecha.getText().toString();
         String coste = txtCoste.getText().toString();
         String prioridad = spinnerPrioridad.getSelectedItem().toString();
-        Tarea tarea = new Tarea(nombre, descri, fecha, coste, prioridad, this);
+        Tarea tarea = new Tarea(nombre, descri, fecha, coste, prioridad,0, this);
         tarea.guardarTarea(this);
         Toast.makeText(this, "Tarea guardad", Toast.LENGTH_SHORT).show();
     }

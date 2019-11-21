@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3F51B5">
+
+        <Button
+            android:id="@+id/btnNuevaTarea"
+            android:layout_width="356dp"
+            android:layout_height="91dp"
+            android:onClick="irACrear"
+            android:text="@string/nueva_tarea"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.385" />
+
+        <Button
+            android:id="@+id/btnListaTareas"
+            android:layout_width="357dp"
+            android:layout_height="83dp"
+            android:layout_marginTop="52dp"
+            android:onClick="irALista"
+            android:text="@string/ver_tareas"
+            app:layout_constraintEnd_toEndOf="@+id/btnNuevaTarea"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btnNuevaTarea"
+            app:layout_constraintTop_toBottomOf="@+id/btnNuevaTarea" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

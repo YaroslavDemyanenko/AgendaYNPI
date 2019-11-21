@@ -12,7 +12,7 @@
         android:background="#3F51B5">
 
         <TextView
-            android:id="@+id/lblTituloListaTareas"
+            android:id="@+id/lblNombreTarea"
             android:layout_width="145dp"
             android:layout_height="51dp"
             android:layout_marginTop="56dp"
@@ -44,10 +44,10 @@
             android:textColorHint="#A8E4CDCD"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblTituloListaTareas" />
+            app:layout_constraintTop_toBottomOf="@+id/lblNombreTarea" />
 
         <EditText
-            android:id="@+id/txtTareaDesc"
+            android:id="@+id/lblDescripcionTarea"
             android:layout_width="330dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
@@ -63,7 +63,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtTareaNombre" />
 
         <EditText
-            android:id="@+id/txtCosteTarea"
+            android:id="@+id/lblCosteTarea"
             android:layout_width="330dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
@@ -75,11 +75,11 @@
             android:textColorHint="#A8E4CDCD"
             app:layout_constraintEnd_toEndOf="@+id/spinnerPrioridad"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/calenFecha"
-            app:layout_constraintTop_toBottomOf="@+id/calenFecha" />
+            app:layout_constraintStart_toStartOf="@+id/lblFechaTarea"
+            app:layout_constraintTop_toBottomOf="@+id/lblFechaTarea" />
 
         <EditText
-            android:id="@+id/calenFecha"
+            android:id="@+id/lblFechaTarea"
             android:layout_width="168dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
@@ -92,8 +92,8 @@
             android:onClick="onClick"
             android:textColor="#E4CDCD"
             android:textColorHint="#A8E4CDCD"
-            app:layout_constraintStart_toStartOf="@+id/txtTareaDesc"
-            app:layout_constraintTop_toBottomOf="@+id/txtTareaDesc"
+            app:layout_constraintStart_toStartOf="@+id/lblDescripcionTarea"
+            app:layout_constraintTop_toBottomOf="@+id/lblDescripcionTarea"
             tools:targetApi="lollipop" />
 
         <Spinner
@@ -103,11 +103,11 @@
             android:layout_marginTop="24dp"
             android:backgroundTint="#E4CDCD"
             android:textColor="#E4CDCD"
-            app:layout_constraintEnd_toEndOf="@+id/txtTareaDesc"
-            app:layout_constraintTop_toBottomOf="@+id/txtTareaDesc" />
+            app:layout_constraintEnd_toEndOf="@+id/lblDescripcionTarea"
+            app:layout_constraintTop_toBottomOf="@+id/lblDescripcionTarea" />
 
         <Button
-            android:id="@+id/btnGuardarNuevaTarea"
+            android:id="@+id/btnNuevaTarea"
             android:layout_width="88dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
@@ -119,21 +119,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.136"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtCosteTarea"
+            app:layout_constraintTop_toBottomOf="@+id/lblCosteTarea"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/btnCancelarNuevaTarea"
+            android:id="@+id/btnListaTareas"
             android:layout_width="96dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="45dp"
             android:layout_marginRight="45dp"
             android:text="@string/cancelar"
-            app:layout_constraintBottom_toBottomOf="@+id/btnGuardarNuevaTarea"
+            app:layout_constraintBottom_toBottomOf="@+id/btnNuevaTarea"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.78"
-            app:layout_constraintStart_toEndOf="@+id/btnGuardarNuevaTarea"
-            app:layout_constraintTop_toTopOf="@+id/btnGuardarNuevaTarea"
+            app:layout_constraintStart_toEndOf="@+id/btnNuevaTarea"
+            app:layout_constraintTop_toTopOf="@+id/btnNuevaTarea"
             app:layout_constraintVertical_bias="0.98" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -8,35 +8,26 @@ import android.widget.Toast;
 
 import com.example.agendaynpi.BaseSQLite.SQLiteHelper;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Tarea {
+public class Tarea implements Serializable {
     private String nombre, descri, coste, prioridad,fecha;
+    private boolean estaHecha,paraBorrar;
 
-    public Tarea(String nombre, String descri, String fecha, String coste, String prioridad, Context contexto) {
+    public Tarea(String nombre, String descri, String fecha, String coste, String prioridad, int estaHecha, Context contexto) {
         this.nombre = nombre;
         this.descri = descri;
         this.fecha = fecha;
         this.coste = coste;
         this.prioridad = prioridad;
-    }
-
-    /**
-    public int consultaCodigoMaximo(Context context) {
-        SQLiteHelper admin = new SQLiteHelper(context, "tareas", null, 1);
-        SQLiteDatabase bd = admin.getWritableDatabase();
-        String codMax="";
-        Cursor fila = bd.rawQuery("select max(codigo) from tareas", null);
-        if (fila.moveToFirst()) {
-            codMax=fila.getString(0);
-        } else {
-            Toast.makeText(context, "Codigo maximo no encontrado", Toast.LENGTH_SHORT).show();
+        if (estaHecha == 1){
+            this.estaHecha=true;
+        }else{
+            this.estaHecha=false;
         }
-
-        bd.close();
-        return Integer.valueOf(codMax);
+        this.paraBorrar=false;
     }
-**/
 
     public boolean guardarTarea(Context context){
         SQLiteHelper admin = new SQLiteHelper(context, "tareas", null, 1);
@@ -52,6 +43,86 @@ public class Tarea {
 
         bd.insert("tareas", null, registro);
         bd.close();
-        return false;
+        return true;
     }
+
+    public boolean borrarTarea(Context context){
+        SQLiteHelper admin=new SQLiteHelper(context, "tareas", null, 1);
+        SQLiteDatabase bd=admin.getWritableDatabase();
+
+        int cant=bd.delete("tareas", "nombre="+this.nombre+" and descripcion="+this.descri,null);
+        bd.close();
+        return cant>0;
+    }
+
+    public boolean TODOUPDATE(Context context){
+        SQLiteHelper admin=new SQLiteHelper(context, "tareas", null, 1);
+        SQLiteDatabase bd=admin.getWritableDatabase();
+
+        int cant=bd.delete("tareas", "nombre="+this.nombre+" and descripcion="+this.descri,null);
+        bd.close();
+        return cant>0;
+    }
+
+    public boolean isParaBorrar() {
+        return paraBorrar;
+    }
+
+    public void setParaBorrar(boolean paraBorrar) {
+        this.paraBorrar = paraBorrar;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDescri() {
+        return descri;
+    }
+
+    public String getCoste() {
+        return coste;
+    }
+
+    public String getPrioridad() {
+        return prioridad;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public boolean isEstaHecha() {
+        return estaHecha;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDescri(String descri) {
+        this.descri = descri;
+    }
+
+    public void setCoste(String coste) {
+        this.coste = coste;
+    }
+
+    public void setPrioridad(String prioridad) {
+        this.prioridad = prioridad;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setEstaHecha(boolean estaHecha) {
+        this.estaHecha = estaHecha;
+    }
+
 }

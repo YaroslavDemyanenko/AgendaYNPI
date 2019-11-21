@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3F51B5">
+
+        <TextView
+            android:id="@+id/lblNombreTareaDetallada"
+            android:layout_width="145dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="96dp"
+            android:gravity="center"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#E4CDCD"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="lollipop" />
+
+        <TextView
+            android:id="@+id/lblDescripcionTareaDetallada"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="56dp"
+            android:ems="10"
+            android:textColor="#E4CDCD"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblNombreTareaDetallada" />
+
+        <TextView
+            android:id="@+id/lblCosteTareaDetallada"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:textColor="#E4CDCD"
+            app:layout_constraintStart_toStartOf="@+id/lblFechaTareaDetallada"
+            app:layout_constraintTop_toBottomOf="@+id/lblFechaTareaDetallada" />
+
+        <TextView
+            android:id="@+id/lblFechaTareaDetallada"
+            android:layout_width="168dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#E4CDCD"
+            android:ems="10"
+            android:maxLines="1"
+            android:textColor="#E4CDCD"
+            app:layout_constraintStart_toStartOf="@+id/lblDescripcionTareaDetallada"
+            app:layout_constraintTop_toBottomOf="@+id/lblDescripcionTareaDetallada"
+            tools:targetApi="lollipop" />
+
+        <TextView
+            android:id="@+id/lblPrioridadTareaDetallada"
+            android:layout_width="119dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#E4CDCD"
+            android:ems="10"
+            android:maxLines="1"
+            android:textColor="#E4CDCD"
+            app:layout_constraintBottom_toTopOf="@+id/lblCosteTareaDetallada"
+            app:layout_constraintEnd_toEndOf="@+id/lblDescripcionTareaDetallada"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/lblFechaTareaDetallada"
+            app:layout_constraintTop_toBottomOf="@+id/lblDescripcionTareaDetallada"
+            app:layout_constraintVertical_bias="0.489"
+            tools:targetApi="lollipop" />
+
+        <Button
+            android:id="@+id/btnVolverTareasDetalladas"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="60dp"
+            android:text="@string/volver"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblCosteTareaDetallada"
+            app:layout_constraintVertical_bias="0.984" />
+
+        <Button
+            android:id="@+id/btnBorrarTareasDetalladas"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="60dp"
+            android:text="@string/borrar"
+            app:layout_constraintBottom_toBottomOf="@id/btnHechaTareasDetalladas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnHechaTareasDetalladas"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/btnHechaTareasDetalladas"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:onClick="marcarCompletada"
+            android:text="@string/hecha"
+            app:layout_constraintBottom_toBottomOf="@id/btnVolverTareasDetalladas"
+            app:layout_constraintEnd_toStartOf="@+id/btnBorrarTareasDetalladas"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toEndOf="@id/btnVolverTareasDetalladas"
+            app:layout_constraintTop_toTopOf="@id/btnVolverTareasDetalladas"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
