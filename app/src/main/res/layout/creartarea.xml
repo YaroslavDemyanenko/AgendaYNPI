@@ -79,16 +79,18 @@
         android:layout_width="168dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="date"
-        android:focusable="false"
+        android:backgroundTint="#E4CDCD"
         android:clickable="true"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="date"
         android:maxLines="1"
+        android:onClick="cogerFecha"
+        android:textColor="#E4CDCD"
+        android:textColorHint="#A8E4CDCD"
         app:layout_constraintStart_toStartOf="@+id/txtTareaDesc"
         app:layout_constraintTop_toBottomOf="@+id/txtTareaDesc"
-        android:textColorHint="#A8E4CDCD"
-        android:backgroundTint="#E4CDCD"
-        android:textColor="#E4CDCD" tools:targetApi="lollipop" />
+        tools:targetApi="lollipop" />
 
     <Spinner
         android:id="@+id/spinnerPrioridad"
@@ -101,20 +103,21 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTareaDesc" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnGuardarNuevaTarea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
         android:layout_marginLeft="45dp"
         android:layout_marginBottom="88dp"
-        android:text="@string/registrar"
+        android:onClick="guardarTareaEnBd"
+        android:text="@string/guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.141"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnCancelarNuevaTarea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="45dp"
@@ -124,5 +127,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintStart_toEndOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/btnGuardarNuevaTarea" />
 </androidx.constraintlayout.widget.ConstraintLayout>

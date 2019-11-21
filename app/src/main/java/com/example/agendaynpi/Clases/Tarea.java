@@ -1,5 +1,6 @@
 package com.example.agendaynpi.Clases;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,20 +11,17 @@ import com.example.agendaynpi.BaseSQLite.SQLiteHelper;
 import java.util.Date;
 
 public class Tarea {
-    private String nombre, descri, coste, prioridad;
-    private int codigo;
-    private Date fecha;
+    private String nombre, descri, coste, prioridad,fecha;
 
-
-    public Tarea(String nombre, String descri, Date fecha, String coste, String prioridad, Context contexto) {
+    public Tarea(String nombre, String descri, String fecha, String coste, String prioridad, Context contexto) {
         this.nombre = nombre;
         this.descri = descri;
         this.fecha = fecha;
         this.coste = coste;
         this.prioridad = prioridad;
-        this.codigo = consultaCodigoMaximo(contexto);
     }
 
+    /**
     public int consultaCodigoMaximo(Context context) {
         SQLiteHelper admin = new SQLiteHelper(context, "tareas", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
@@ -37,5 +35,23 @@ public class Tarea {
 
         bd.close();
         return Integer.valueOf(codMax);
+    }
+**/
+
+    public boolean guardarTarea(Context context){
+        SQLiteHelper admin = new SQLiteHelper(context, "tareas", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+
+        ContentValues registro = new ContentValues();
+        registro.put("nombre", nombre);
+        registro.put("descripcion", descri);
+        registro.put("coste", coste);
+        registro.put("fecha", fecha);
+        registro.put("prioridad", prioridad);
+        registro.put("tareaHecha",0);
+
+        bd.insert("tareas", null, registro);
+        bd.close();
+        return false;
     }
 }
