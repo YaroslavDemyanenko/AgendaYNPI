@@ -1,11 +1,11 @@
 package com.example.agendaynpi.Actividades;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.agendaynpi.Clases.Tarea;
 import com.example.agendaynpi.R;
@@ -42,7 +42,4 @@ public class DetalleTareaActivity extends AppCompatActivity {
         this.tarea.setEstaHecha(true);
     }
 
-    public void borrar(View v){
-
-    }
 }

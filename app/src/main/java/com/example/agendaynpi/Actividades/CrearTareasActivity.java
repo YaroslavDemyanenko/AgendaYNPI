@@ -2,12 +2,14 @@ package com.example.agendaynpi.Actividades;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +23,11 @@ import java.util.Locale;
 public class CrearTareasActivity extends AppCompatActivity {
 
     private EditText txtNombre, txtDesc, txtCoste, calenFecha;
+    private TextView lblCrearModificarTarea;
     private Spinner spinnerPrioridad;
     private int ultimoAnio, ultimoMes, ultimoDiaDelMes;
+    private Tarea tarea;
+    private boolean modoModificacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,7 @@ public class CrearTareasActivity extends AppCompatActivity {
         txtDesc = findViewById(R.id.lblDescripcionTarea);
         txtCoste = findViewById(R.id.lblCosteTarea);
         calenFecha = findViewById(R.id.lblFechaTarea);
+        lblCrearModificarTarea = findViewById(R.id.lblCrearModificarTarea);
 
         final Calendar calendario = Calendar.getInstance();
         ultimoAnio = calendario.get(Calendar.YEAR);
@@ -51,6 +57,24 @@ public class CrearTareasActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.prioridades_array, R.layout.spinneryaros);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPrioridad.setAdapter(adapter);
+
+        Intent intent = getIntent();
+        Object objetosIntent = intent.getSerializableExtra(ListaTareasActivity.tareaIntent);
+        this.tarea = (Tarea) objetosIntent;
+        this.modoModificacion = !(this.tarea == null);
+        if (modoModificacion){
+            cargarDatosEnCampos();
+        }else{
+            lblCrearModificarTarea.setText("Crear Tarea");
+        }
+    }
+
+    private void cargarDatosEnCampos() {
+        lblCrearModificarTarea.setText("ModificarTarea");
+        txtNombre.setText(this.tarea.getNombre());
+        txtDesc.setText(this.tarea.getDescri());
+        spinnerPrioridad.setSelection(0);
+        txtNombre.setText(this.tarea.getNombre());
     }
 
 
@@ -72,47 +96,18 @@ public class CrearTareasActivity extends AppCompatActivity {
 
     public void guardarTareaEnBd(View v) {
         //DB BROWSER
-        String nombre = txtNombre.getText().toString();
-        String descri = txtDesc.getText().toString();
-        String fecha = calenFecha.getText().toString();
-        String coste = txtCoste.getText().toString();
-        String prioridad = spinnerPrioridad.getSelectedItem().toString();
-        Tarea tarea = new Tarea(nombre, descri, fecha, coste, prioridad,0, this);
-        tarea.guardarTarea(this);
-        Toast.makeText(this, "Tarea guardad", Toast.LENGTH_SHORT).show();
+        if (!modoModificacion) {
+            String nombre = txtNombre.getText().toString();
+            String descri = txtDesc.getText().toString();
+            String fecha = calenFecha.getText().toString();
+            String coste = txtCoste.getText().toString();
+            int prioridad = spinnerPrioridad.getSelectedItemPosition();
+            Tarea tarea = new Tarea(nombre, descri, fecha, coste, prioridad, 0, this);
+            tarea.guardarTarea(this);
+            Toast.makeText(this, "Tarea guardada", Toast.LENGTH_SHORT).show();
+        }else{
+            
+        }
+
     }
-
-
-    /**
-     public void consultapordescripcion(View v) {
-     admin = new SQLiteHelper(this,
-     "administracion", null, 1);
-     bd = admin.getWritableDatabase();
-     String descri = et2.getText().toString();
-     Cursor fila = bd.rawQuery("select codigo,precio from articulos where descripcion='" + descri +"'", null);
-     if (fila.moveToFirst()) {
-     et1.setText(fila.getString(0));
-     et3.setText(fila.getString(1));
-     } else
-     Toast.makeText(this, "No existe un artículo con dicha descripción", Toast.LENGTH_SHORT).show();
-     bd.close();
-     }
-
-     public void bajaporcodigo(View v) {
-     admin = new SQLiteHelper(this, "administracion", null, 1);
-     bd = admin.getWritableDatabase();
-     String cod= et1.getText().toString();
-     int cant = bd.delete("articulos", "codigo=" + cod, null);
-     bd.close();
-     et1.setText("");
-     et2.setText("");
-     et3.setText("");
-     if (cant == 1)
-     Toast.makeText(this, "Se borró el artículo con dicho código", Toast.LENGTH_SHORT).show();
-     else
-     Toast.makeText(this, "No existe un artículo con dicho código", Toast.LENGTH_SHORT).show();
-     }
-     **/
-
-
 }

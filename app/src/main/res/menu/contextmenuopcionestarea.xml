@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/marcarCompletadaContextual"
+        android:title="@string/marcar_completada" />
+
+    <item
+        android:id="@+id/modificarTareaContextual"
+        android:title="@string/modificar_tarea" />
+
+    <item
+        android:id="@+id/borrarTareaContextual"
+        android:title="@string/borrar_tarea" />
+</menu>

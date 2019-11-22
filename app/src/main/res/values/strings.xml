@@ -19,6 +19,9 @@
     <string name="hecha">Hecha</string>
     <string name="nueva_tarea">Nueva Tarea</string>
     <string name="ver_tareas">Ver tareas</string>
+    <string name="marcar_completada">Marcar completada</string>
+    <string name="modificar_tarea">Modificar tarea</string>
+    <string name="borrar_tarea">Borrar tarea</string>
     <string-array name="prioridades_array">
         <item>Urgente</item>
         <item>Alta</item>

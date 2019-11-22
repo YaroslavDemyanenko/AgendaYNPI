@@ -2,34 +2,37 @@ package com.example.agendaynpi.Clases;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 import com.example.agendaynpi.BaseSQLite.SQLiteHelper;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Tarea implements Serializable {
-    private String nombre, descri, coste, prioridad,fecha;
-    private boolean estaHecha,paraBorrar;
+    private String nombre, descri, coste, fecha;
+    private int prioridad;
+    private boolean estaHecha, paraBorrar, paraModificar;
 
-    public Tarea(String nombre, String descri, String fecha, String coste, String prioridad, int estaHecha, Context contexto) {
+    public Tarea(String nombre, String descri, String fecha, String coste, int prioridad, int estaHecha, Context contexto) {
         this.nombre = nombre;
         this.descri = descri;
         this.fecha = fecha;
         this.coste = coste;
-        this.prioridad = prioridad;
-        if (estaHecha == 1){
-            this.estaHecha=true;
-        }else{
-            this.estaHecha=false;
+        if (prioridad>0 && prioridad<5){
+            this.prioridad = prioridad;
+        }else {
+            this.prioridad = 1;
         }
-        this.paraBorrar=false;
+
+        if (estaHecha == 1) {
+            this.estaHecha = true;
+        } else {
+            this.estaHecha = false;
+        }
+        this.paraModificar = false;
     }
 
-    public boolean guardarTarea(Context context){
+    public boolean guardarTarea(Context context) {
         SQLiteHelper admin = new SQLiteHelper(context, "tareas", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
 
@@ -39,33 +42,45 @@ public class Tarea implements Serializable {
         registro.put("coste", coste);
         registro.put("fecha", fecha);
         registro.put("prioridad", prioridad);
-        registro.put("tareaHecha",0);
+        registro.put("tareaHecha", 0);
 
         bd.insert("tareas", null, registro);
         bd.close();
         return true;
     }
 
-    public boolean borrarTarea(Context context){
-        SQLiteHelper admin=new SQLiteHelper(context, "tareas", null, 1);
-        SQLiteDatabase bd=admin.getWritableDatabase();
-
-        int cant=bd.delete("tareas", "nombre="+this.nombre+" and descripcion="+this.descri,null);
+    public boolean borrarTarea(Context context) {
+        SQLiteHelper admin = new SQLiteHelper(context, "tareas", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        int cant = bd.delete("tareas", "nombre=" + this.nombre + " and descripcion=" + this.descri, null);
         bd.close();
-        return cant>0;
+        return cant > 0;
     }
 
-    public boolean TODOUPDATE(Context context){
-        SQLiteHelper admin=new SQLiteHelper(context, "tareas", null, 1);
-        SQLiteDatabase bd=admin.getWritableDatabase();
+    public boolean actualizarTarea(Context context, String nuevoNombre,String nuevaDesc) {
+        SQLiteHelper admin = new SQLiteHelper(context, "tareas", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
 
-        int cant=bd.delete("tareas", "nombre="+this.nombre+" and descripcion="+this.descri,null);
+        ContentValues registro = new ContentValues();
+        registro.put("nombre", nuevoNombre);
+        registro.put("descripcion", nuevaDesc);
+        registro.put("coste", coste);
+        registro.put("fecha", fecha);
+        registro.put("prioridad", prioridad);
+        if (estaHecha == true) {
+            registro.put("tareaHecha", 1);
+        } else {
+            registro.put("tareaHecha", 0);
+        }
+        int cant = bd.update("tareas", registro,"nombre=" + this.nombre + " and descripcion=" + this.descri, null);
+        this.nombre=nuevoNombre;
+        this.descri=nuevaDesc;
         bd.close();
-        return cant>0;
+        return cant > 0;
     }
 
-    public boolean isParaBorrar() {
-        return paraBorrar;
+    public void setParaModificar(boolean paraModificar) {
+        this.paraModificar = paraModificar;
     }
 
     public void setParaBorrar(boolean paraBorrar) {
@@ -84,9 +99,6 @@ public class Tarea implements Serializable {
         return coste;
     }
 
-    public String getPrioridad() {
-        return prioridad;
-    }
 
     public String getFecha() {
         return fecha;
@@ -113,7 +125,11 @@ public class Tarea implements Serializable {
         this.coste = coste;
     }
 
-    public void setPrioridad(String prioridad) {
+    public int getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(int prioridad) {
         this.prioridad = prioridad;
     }
 

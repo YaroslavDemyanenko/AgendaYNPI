@@ -12,7 +12,7 @@
         android:background="#3F51B5">
 
         <TextView
-            android:id="@+id/lblNombreTarea"
+            android:id="@+id/lblCrearModificarTarea"
             android:layout_width="145dp"
             android:layout_height="51dp"
             android:layout_marginTop="56dp"
@@ -44,7 +44,7 @@
             android:textColorHint="#A8E4CDCD"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblNombreTarea" />
+            app:layout_constraintTop_toBottomOf="@+id/lblCrearModificarTarea" />
 
         <EditText
             android:id="@+id/lblDescripcionTarea"
