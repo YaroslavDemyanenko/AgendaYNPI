@@ -27,7 +27,7 @@ public class CrearTareasActivity extends AppCompatActivity {
     private Spinner spinnerPrioridad;
     private int ultimoAnio, ultimoMes, ultimoDiaDelMes;
     private Tarea tarea;
-    private boolean modoModificacion;
+    private boolean modoModificacion = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,19 +62,20 @@ public class CrearTareasActivity extends AppCompatActivity {
         Object objetosIntent = intent.getSerializableExtra(ListaTareasActivity.tareaIntent);
         this.tarea = (Tarea) objetosIntent;
         this.modoModificacion = !(this.tarea == null);
-        if (modoModificacion){
+        if (modoModificacion) {
             cargarDatosEnCampos();
-        }else{
+        } else {
             lblCrearModificarTarea.setText("Crear Tarea");
         }
     }
 
     private void cargarDatosEnCampos() {
-        lblCrearModificarTarea.setText("ModificarTarea");
+        lblCrearModificarTarea.setText("Modificar Tarea");
         txtNombre.setText(this.tarea.getNombre());
         txtDesc.setText(this.tarea.getDescri());
-        spinnerPrioridad.setSelection(0);
-        txtNombre.setText(this.tarea.getNombre());
+        spinnerPrioridad.setSelection(tarea.getPrioridad());
+        txtCoste.setText(this.tarea.getCoste());
+        calenFecha.setText(this.tarea.getFecha());
     }
 
 
@@ -95,19 +96,27 @@ public class CrearTareasActivity extends AppCompatActivity {
 
 
     public void guardarTareaEnBd(View v) {
-        //DB BROWSER
+        String nombre = txtNombre.getText().toString();
+        String descri = txtDesc.getText().toString();
+        String fecha = calenFecha.getText().toString();
+        String coste = txtCoste.getText().toString();
+        int prioridad = spinnerPrioridad.getSelectedItemPosition();
         if (!modoModificacion) {
-            String nombre = txtNombre.getText().toString();
-            String descri = txtDesc.getText().toString();
-            String fecha = calenFecha.getText().toString();
-            String coste = txtCoste.getText().toString();
-            int prioridad = spinnerPrioridad.getSelectedItemPosition();
-            Tarea tarea = new Tarea(nombre, descri, fecha, coste, prioridad, 0, this);
-            tarea.guardarTarea(this);
+            Tarea tareaNueva = new Tarea(nombre, descri, fecha, coste, prioridad, 0);
+            tareaNueva.guardarTarea(this);
             Toast.makeText(this, "Tarea guardada", Toast.LENGTH_SHORT).show();
-        }else{
-            
+            pasarA(MenuPrincipalActivity.class);
+        } else {
+            Tarea tareaModificada = new Tarea(nombre, descri, fecha, coste, prioridad, this.tarea.isEstaHechaInt());
+            this.tarea.actualizarTarea(this,tareaModificada);
+            Toast.makeText(this, "Tarea modificada", Toast.LENGTH_SHORT).show();
+            pasarA(ListaTareasActivity.class);
         }
+    }
 
+
+    private void pasarA(Class clase) {
+        Intent intent = new Intent(this, clase);
+        startActivity(intent);
     }
 }

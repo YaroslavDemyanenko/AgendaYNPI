@@ -51,9 +51,9 @@ public class ListaTareasActivity extends AppCompatActivity {
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        menu.setHeaderTitle("Elija el color de fondo:");
+        menu.setHeaderTitle("¿Que quieres hacer?");
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.contextmenuopcionestarea,menu);
+        inflater.inflate(R.menu.contextmenuopcionestarea, menu);
     }
 
     @Override
@@ -62,24 +62,25 @@ public class ListaTareasActivity extends AppCompatActivity {
         Tarea tareaSeleccionada = tareasCopia.get(info.position);
         switch (item.getItemId()) {
             case R.id.marcarCompletadaContextual:
-                tareaSeleccionada.setEstaHecha(true);
-                tareaSeleccionada.actualizarTarea(this,tareaSeleccionada.getNombre(),tareaSeleccionada.getDescri());
+                tareaSeleccionada.marcarCompletada(this);
+                actualizarListaTareas(null);
+                arrayAdapter.notifyDataSetChanged();
                 break;
             case R.id.modificarTareaContextual:
-                tareasCopia.get(info.position).setParaModificar(true);
-                pasarAModificar(tareaSeleccionada);
+                pasarAModificarTarea(tareaSeleccionada);
                 break;
             case R.id.borrarTareaContextual:
                 tareasCopia.get(info.position).borrarTarea(this);
-                tareasCopia.remove(info.position);
                 tareas.remove(tareasCopia.get(info.position));
+                tareasCopia.remove(info.position);
+                arrayAdapter.notifyDataSetChanged();
                 break;
         }
         return true;
     }
 
 
-    private void pasarAModificar(Tarea tarea) {
+    private void pasarAModificarTarea(Tarea tarea) {
         Intent intent = new Intent(this, CrearTareasActivity.class);
         intent.putExtra(tareaIntent, tarea);
         startActivity(intent);
@@ -105,12 +106,6 @@ public class ListaTareasActivity extends AppCompatActivity {
                 pasarATareaDetallada(tareaSeleccionada);
             }
         });
-        listaTareas.setOnLongClickListener(new AdapterView.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                return false;
-            }
-        });
     }
 
     public List<Tarea> consultaTareas() {
@@ -121,7 +116,7 @@ public class ListaTareasActivity extends AppCompatActivity {
         tareas = new ArrayList<Tarea>();
         if (fila.moveToFirst()) {
             for (int i = 0; i < fila.getCount(); i++) {
-                tareas.add(new Tarea(fila.getString(0), fila.getString(1), fila.getString(2), fila.getString(3), fila.getInt(4), fila.getInt(5), this));
+                tareas.add(new Tarea(fila.getString(0), fila.getString(1), fila.getString(2), fila.getString(3), fila.getInt(4), fila.getInt(5)));
                 fila.moveToNext();
             }
             fila.close();
@@ -131,31 +126,29 @@ public class ListaTareasActivity extends AppCompatActivity {
         return tareas;
     }
 
-    private void pasarA(Class clase) {
-        Intent intent = new Intent(this, clase);
-        startActivity(intent);
-    }
 
     public void actualizarListaTareas(View v) {
         boolean hechas, pendientes;
         hechas = cbhHechas.isChecked();
         pendientes = cbhPendientes.isChecked();
         tareasCopia.clear();
-        if (hechas && !pendientes) {
-            for (Tarea tar : tareas) {
-                if (tar.isEstaHecha()) {
+        if (hechas || pendientes) {
+            if (hechas && !pendientes) {
+                for (Tarea tar : tareas) {
+                    if (tar.isEstaHecha()) {
+                        tareasCopia.add(tar);
+                    }
+                }
+            } else if (!hechas && pendientes) {
+                for (Tarea tar : tareas) {
+                    if (!tar.isEstaHecha()) {
+                        tareasCopia.add(tar);
+                    }
+                }
+            } else {
+                for (Tarea tar : tareas) {
                     tareasCopia.add(tar);
                 }
-            }
-        } else if (!hechas && pendientes) {
-            for (Tarea tar : tareas) {
-                if (!tar.isEstaHecha()) {
-                    tareasCopia.add(tar);
-                }
-            }
-        } else {
-            for (Tarea tar : tareas) {
-                tareasCopia.add(tar);
             }
         }
         arrayAdapter.notifyDataSetChanged();
