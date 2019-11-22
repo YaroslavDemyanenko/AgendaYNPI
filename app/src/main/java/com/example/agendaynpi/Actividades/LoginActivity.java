@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         String contrasenya = preferencias.getString("contrasenya", "admin");
         Comodin.ocultarTeclado(loginAct);
         if (usuario.equals(usuarioIntroducido)) {
-            if (contrasenya.equals(contrasenyaIntroducida) && !usuario.equals("root")) {
+            if (contrasenya.equals(contrasenyaIntroducida)) {
 
                 pasarA(MenuPrincipalActivity.class);
             } else {
