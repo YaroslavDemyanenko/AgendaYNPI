@@ -8,7 +8,7 @@
     tools:context=".Actividades.MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/lblSaludoPrincipal"
         android:layout_width="246dp"
         android:layout_height="97dp"
         android:gravity="center"
@@ -21,18 +21,18 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373" />
+        app:layout_constraintVertical_bias="0.223" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="136dp"
         android:layout_height="127dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="180dp"
         android:contentDescription="@string/icono"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/lblSaludoPrincipal"
         app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/lblSaludoPrincipal"
+        app:layout_constraintTop_toBottomOf="@+id/lblSaludoPrincipal"
         app:srcCompat="@drawable/dedo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="380dp"
-    android:layout_height="180dp">
+    android:layout_height="200dp"
+    android:background="#3F51B5">
 
     <EditText
         android:id="@+id/txtUsuarioRegistro"
@@ -12,31 +12,63 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:backgroundTint="@color/blancoLetraNormal"
+        android:textColor="@color/blancoLetraNormal"
+        android:textColorHint="@color/blancoLetraHint"
+        android:layout_marginBottom="16dp"
         android:hint="@string/usuario"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/txtContrasenyaRegistro"
+        app:layout_constraintBottom_toTopOf="@+id/txtContrasenyaRegistroActual"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.344" tools:targetApi="lollipop"/>
 
     <EditText
-        android:id="@+id/txtContrasenyaRegistro"
+        android:id="@+id/txtContrasenyaRegistroActual"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/blancoLetraNormal"
+        android:textColor="@color/blancoLetraNormal"
+        android:textColorHint="@color/blancoLetraHint"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
-        android:hint="@string/contrasenya"
+        android:hint="@string/contrase_a_actual"
+        android:importantForAutofill="no"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtContrasenyaRegistroNueva"
         app:layout_constraintEnd_toEndOf="@+id/txtUsuarioRegistro"
         app:layout_constraintStart_toStartOf="@+id/txtUsuarioRegistro"
-        android:importantForAutofill="no" tools:targetApi="jelly_bean" />
+        app:layout_constraintTop_toBottomOf="@+id/txtUsuarioRegistro"
+        tools:targetApi="lollipop" />
+
+    <EditText
+        android:id="@+id/txtContrasenyaRegistroNueva"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="@string/contrase_a_nueva"
+        android:inputType="textPassword"
+        android:backgroundTint="@color/blancoLetraNormal"
+        android:textColor="@color/blancoLetraNormal"
+        android:textColorHint="@color/blancoLetraHint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txtContrasenyaRegistroActual"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtContrasenyaRegistroActual"
+        app:layout_constraintTop_toBottomOf="@+id/txtContrasenyaRegistroActual"
+        android:importantForAutofill="no" tools:targetApi="lollipop"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

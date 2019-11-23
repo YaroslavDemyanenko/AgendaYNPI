@@ -9,18 +9,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3F51B5">
+        android:background="@color/azulFondo">
 
         <TextView
-            android:id="@+id/lblCrearModificarTarea"
-            android:layout_width="145dp"
-            android:layout_height="51dp"
+            android:id="@+id/txtCrearModificarTarea"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
             android:layout_marginTop="56dp"
             android:gravity="center"
             android:text="@string/tituloCrearTarea"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#E4CDCD"
-            android:textColorHint="#A8E4CDCD"
+            android:textColor="@color/blancoLetraNormal"
+            android:textColorHint="@color/blancoLetraHint"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,75 +36,80 @@
             android:layout_marginTop="44dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="#E4CDCD"
+            android:backgroundTint="@color/blancoLetraNormal"
             android:ems="10"
             android:hint="@string/nombre"
             android:inputType="textPersonName"
-            android:textColor="#E4CDCD"
-            android:textColorHint="#A8E4CDCD"
+            android:textColor="@color/blancoLetraNormal"
+            android:textColorHint="@color/blancoLetraHint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblCrearModificarTarea" />
+            app:layout_constraintTop_toBottomOf="@+id/txtCrearModificarTarea"
+            android:importantForAutofill="no" tools:targetApi="lollipop" />
 
         <EditText
-            android:id="@+id/lblDescripcionTarea"
+            android:id="@+id/txtDescripcionTarea"
             android:layout_width="330dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="#E4CDCD"
+            android:backgroundTint="@color/blancoLetraNormal"
             android:ems="10"
             android:hint="@string/descripcion"
             android:inputType="textPersonName"
-            android:textColor="#E4CDCD"
-            android:textColorHint="#A8E4CDCD"
+            android:textColor="@color/blancoLetraNormal"
+            android:textColorHint="@color/blancoLetraHint"
             app:layout_constraintEnd_toEndOf="@+id/txtTareaNombre"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/txtTareaNombre"
-            app:layout_constraintTop_toBottomOf="@+id/txtTareaNombre" />
+            app:layout_constraintTop_toBottomOf="@+id/txtTareaNombre"
+            android:importantForAutofill="no" tools:targetApi="lollipop" />
 
         <EditText
-            android:id="@+id/lblCosteTarea"
+            android:id="@+id/txtCosteTarea"
             android:layout_width="330dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="#E4CDCD"
+            android:backgroundTint="@color/blancoLetraNormal"
             android:ems="10"
             android:hint="@string/coste"
             android:inputType="numberDecimal"
-            android:textColor="#E4CDCD"
-            android:textColorHint="#A8E4CDCD"
+            android:textColor="@color/blancoLetraNormal"
+            android:textColorHint="@color/blancoLetraHint"
             app:layout_constraintEnd_toEndOf="@+id/spinnerPrioridad"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/lblFechaTarea"
-            app:layout_constraintTop_toBottomOf="@+id/lblFechaTarea" />
+            app:layout_constraintStart_toStartOf="@+id/txtFechaTarea"
+            app:layout_constraintTop_toBottomOf="@+id/txtFechaTarea"
+            android:importantForAutofill="no" tools:targetApi="lollipop" />
 
         <EditText
-            android:id="@+id/lblFechaTarea"
+            android:id="@+id/txtFechaTarea"
             android:layout_width="168dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="#E4CDCD"
+
             android:clickable="true"
             android:ems="10"
             android:focusable="false"
             android:inputType="date"
             android:maxLines="1"
             android:onClick="onClick"
-            android:textColor="#E4CDCD"
-            android:textColorHint="#A8E4CDCD"
-            app:layout_constraintStart_toStartOf="@+id/lblDescripcionTarea"
-            app:layout_constraintTop_toBottomOf="@+id/lblDescripcionTarea"
-            tools:targetApi="lollipop" />
+            android:backgroundTint="@color/blancoLetraNormal"
+            android:textColor="@color/blancoLetraNormal"
+            android:textColorHint="@color/blancoLetraHint"
+            app:layout_constraintStart_toStartOf="@+id/txtDescripcionTarea"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescripcionTarea"
+            tools:targetApi="lollipop"
+            android:importantForAutofill="no" />
 
         <Spinner
             android:id="@+id/spinnerPrioridad"
             android:layout_width="149dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="#E4CDCD"
-            android:textColor="#E4CDCD"
-            app:layout_constraintEnd_toEndOf="@+id/lblDescripcionTarea"
-            app:layout_constraintTop_toBottomOf="@+id/lblDescripcionTarea" />
+            android:backgroundTint="@color/blancoLetraNormal"
+            android:textColor="@color/blancoLetraNormal"
+            app:layout_constraintEnd_toEndOf="@+id/txtDescripcionTarea"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescripcionTarea" tools:targetApi="lollipop" />
 
         <Button
             android:id="@+id/btnNuevaTarea"
@@ -119,8 +124,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.136"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblCosteTarea"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/txtCosteTarea"
+            app:layout_constraintVertical_bias="1.0"
+            android:background="@color/azulFondoBoton"
+            android:textColor="@color/blancoLetraNormal"
+            />
 
         <Button
             android:id="@+id/btnListaTareas"
@@ -128,12 +136,16 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="45dp"
             android:layout_marginRight="45dp"
+            android:onClick="irAMenuPrincipal"
             android:text="@string/cancelar"
             app:layout_constraintBottom_toBottomOf="@+id/btnNuevaTarea"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.78"
             app:layout_constraintStart_toEndOf="@+id/btnNuevaTarea"
             app:layout_constraintTop_toTopOf="@+id/btnNuevaTarea"
-            app:layout_constraintVertical_bias="0.98" />
+            app:layout_constraintVertical_bias="0.98"
+            android:background="@color/azulFondoBoton"
+            android:textColor="@color/blancoLetraNormal"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

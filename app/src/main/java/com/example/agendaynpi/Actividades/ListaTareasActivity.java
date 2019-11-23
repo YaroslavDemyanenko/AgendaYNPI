@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,8 +18,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.agendaynpi.BaseSQLite.SQLiteHelper;
 import com.example.agendaynpi.Clases.Tarea;
 import com.example.agendaynpi.R;
@@ -26,7 +25,7 @@ import com.example.agendaynpi.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaTareasActivity extends AppCompatActivity {
+public class ListaTareasActivity extends AppCompatActivityActionBar {
     public static final String tareaIntent = "tarea";
     public CheckBox cbhHechas, cbhPendientes;
     public List<Tarea> tareas;
@@ -48,6 +47,27 @@ public class ListaTareasActivity extends AppCompatActivity {
         cargarAdaptador();
         registerForContextMenu(listaTareas);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menuactionbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id==R.id.actionBarCrearTarea) {
+            Toast.makeText(this,"Se seleccionó la primer opción",Toast.LENGTH_LONG).show();
+        }
+        if (id==R.id.actionBarCambiarContra) {
+            Toast.makeText(this,"Se seleccionó la segunda opción",Toast.LENGTH_LONG).show();
+        }
+        if (id==R.id.actionBarAcercaDe) {
+            Toast.makeText(this,"Se seleccionó la tercer opción", Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -79,13 +99,11 @@ public class ListaTareasActivity extends AppCompatActivity {
         return true;
     }
 
-
     private void pasarAModificarTarea(Tarea tarea) {
         Intent intent = new Intent(this, CrearTareasActivity.class);
         intent.putExtra(tareaIntent, tarea);
         startActivity(intent);
     }
-
 
     private void cargarAdaptador() {
         ArrayAdapter arrayAdapterAux = new ArrayAdapter<Tarea>(this, android.R.layout.simple_list_item_1, tareasCopia) {
@@ -126,7 +144,6 @@ public class ListaTareasActivity extends AppCompatActivity {
         return tareas;
     }
 
-
     public void actualizarListaTareas(View v) {
         boolean hechas, pendientes;
         hechas = cbhHechas.isChecked();
@@ -160,5 +177,8 @@ public class ListaTareasActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void irAMenuPrincipal(View v){
+        pasarA(MenuPrincipalActivity.class);
+    }
 
 }

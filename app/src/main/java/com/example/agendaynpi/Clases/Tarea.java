@@ -4,8 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.agendaynpi.Actividades.ListaTareasActivity;
 import com.example.agendaynpi.BaseSQLite.SQLiteHelper;
+import com.example.agendaynpi.R;
 
 import java.io.Serializable;
 
@@ -24,11 +24,7 @@ public class Tarea implements Serializable {
         } else {
             this.prioridad = 1;
         }
-        if (estaHecha == 1) {
-            this.estaHecha = true;
-        } else {
-            this.estaHecha = false;
-        }
+        this.estaHecha = estaHecha == 1;
     }
 
     public boolean guardarTarea(Context context) {
@@ -81,7 +77,7 @@ public class Tarea implements Serializable {
     }
 
     public boolean marcarCompletada(Context context) {
-        this.estaHecha=true;
+        this.estaHecha = true;
         SQLiteHelper admin = new SQLiteHelper(context, "tareas", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
         ContentValues registro = crearContentValues(this, this.isEstaHechaInt());
@@ -97,6 +93,10 @@ public class Tarea implements Serializable {
 
     public boolean isEstaHecha() {
         return estaHecha;
+    }
+
+    public void setEstaHecha(boolean estaHecha) {
+        this.estaHecha = estaHecha;
     }
 
     public int isEstaHechaInt() {
@@ -143,11 +143,11 @@ public class Tarea implements Serializable {
         return prioridad;
     }
 
-    public void setPrioridad(int prioridad) {
-        this.prioridad = prioridad;
+    public String getPrioridadString(Context context){
+        return context.getResources().getStringArray(R.array.prioridades_array)[prioridad];
     }
 
-    public void setEstaHecha(boolean estaHecha) {
-        this.estaHecha = estaHecha;
+    public void setPrioridad(int prioridad) {
+        this.prioridad = prioridad;
     }
 }

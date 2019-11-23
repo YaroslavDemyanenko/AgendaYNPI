@@ -23,21 +23,36 @@ import java.util.Locale;
 public class CrearTareasActivity extends AppCompatActivity {
 
     private EditText txtNombre, txtDesc, txtCoste, calenFecha;
-    private TextView lblCrearModificarTarea;
+    private TextView txtCrearModificarTarea;
     private Spinner spinnerPrioridad;
     private int ultimoAnio, ultimoMes, ultimoDiaDelMes;
     private Tarea tarea;
     private boolean modoModificacion = false;
+    private DatePickerDialog.OnDateSetListener listenerDeDatePicker = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int anio, int mes, int diaDelMes) {
+            ultimoAnio = anio;
+            ultimoMes = mes;
+            ultimoDiaDelMes = diaDelMes;
+            refrescarFechaEnEditText();
+        }
+    };
+
+    //Esto desactiva el boton de volver
+    @Override
+    public void onBackPressed() {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creartarea);
         txtNombre = findViewById(R.id.txtTareaNombre);
-        txtDesc = findViewById(R.id.lblDescripcionTarea);
-        txtCoste = findViewById(R.id.lblCosteTarea);
-        calenFecha = findViewById(R.id.lblFechaTarea);
-        lblCrearModificarTarea = findViewById(R.id.lblCrearModificarTarea);
+        txtDesc = findViewById(R.id.txtDescripcionTarea);
+        txtCoste = findViewById(R.id.txtCosteTarea);
+        calenFecha = findViewById(R.id.txtFechaTarea);
+        txtCrearModificarTarea = findViewById(R.id.txtCrearModificarTarea);
 
         final Calendar calendario = Calendar.getInstance();
         ultimoAnio = calendario.get(Calendar.YEAR);
@@ -65,12 +80,12 @@ public class CrearTareasActivity extends AppCompatActivity {
         if (modoModificacion) {
             cargarDatosEnCampos();
         } else {
-            lblCrearModificarTarea.setText("Crear Tarea");
+            txtCrearModificarTarea.setText("Crear Tarea");
         }
     }
 
     private void cargarDatosEnCampos() {
-        lblCrearModificarTarea.setText("Modificar Tarea");
+        txtCrearModificarTarea.setText("Modificar Tarea");
         txtNombre.setText(this.tarea.getNombre());
         txtDesc.setText(this.tarea.getDescri());
         spinnerPrioridad.setSelection(tarea.getPrioridad());
@@ -78,22 +93,10 @@ public class CrearTareasActivity extends AppCompatActivity {
         calenFecha.setText(this.tarea.getFecha());
     }
 
-
     public void refrescarFechaEnEditText() {
         String fecha = String.format(Locale.getDefault(), "%02d-%02d-%02d", ultimoAnio, ultimoMes + 1, ultimoDiaDelMes);
         calenFecha.setText(fecha);
     }
-
-    private DatePickerDialog.OnDateSetListener listenerDeDatePicker = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int anio, int mes, int diaDelMes) {
-            ultimoAnio = anio;
-            ultimoMes = mes;
-            ultimoDiaDelMes = diaDelMes;
-            refrescarFechaEnEditText();
-        }
-    };
-
 
     public void guardarTareaEnBd(View v) {
         String nombre = txtNombre.getText().toString();
@@ -108,12 +111,15 @@ public class CrearTareasActivity extends AppCompatActivity {
             pasarA(MenuPrincipalActivity.class);
         } else {
             Tarea tareaModificada = new Tarea(nombre, descri, fecha, coste, prioridad, this.tarea.isEstaHechaInt());
-            this.tarea.actualizarTarea(this,tareaModificada);
+            this.tarea.actualizarTarea(this, tareaModificada);
             Toast.makeText(this, "Tarea modificada", Toast.LENGTH_SHORT).show();
             pasarA(ListaTareasActivity.class);
         }
     }
 
+    public void irAMenuPrincipal(View v){
+        pasarA(MenuPrincipalActivity.class);
+    }
 
     private void pasarA(Class clase) {
         Intent intent = new Intent(this, clase);

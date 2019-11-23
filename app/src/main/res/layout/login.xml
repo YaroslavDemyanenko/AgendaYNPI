@@ -17,13 +17,17 @@
             style="@android:style/Widget.Button.Small"
             android:layout_width="0dp"
             android:layout_height="54dp"
-            android:layout_marginTop="172dp"
+            android:layout_marginTop="112dp"
             android:onClick="login"
             android:text="@string/login"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/txtContrasenyaLogin"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/txtContrasenyaLogin"
-            app:layout_constraintTop_toBottomOf="@+id/txtContrasenyaLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/txtContrasenyaLogin"
+            app:layout_constraintVertical_bias="0.0"
+            android:background="@color/azulFondoBoton"
+            android:textColor="@color/blancoLetraNormal"/>
 
         <EditText
             android:id="@+id/txtUsuarioLogin"

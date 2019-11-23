@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
     SharedPreferences preferencias;
     SharedPreferences.Editor editor;
-    Activity loginAct;
+    Activity actividadActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +29,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login);
         this.preferencias = getSharedPreferences("login", Context.MODE_PRIVATE);
         this.editor = preferencias.edit();
-        this.loginAct = this;
+        this.actividadActual = this;
     }
 
+
+    //Esto desactiva el boton de volver
+    @Override
+    public void onBackPressed() {
+
+    }
     public void login(View v) {
         EditText usuarioTxt = findViewById(R.id.txtUsuarioLogin);
         EditText contrasenyaTxt = findViewById(R.id.txtContrasenyaLogin);
@@ -39,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         String contrasenyaIntroducida = contrasenyaTxt.getText().toString();
         String usuario = preferencias.getString("usuario", "root");
         String contrasenya = preferencias.getString("contrasenya", "admin");
-        Comodin.ocultarTeclado(loginAct);
+        Comodin.ocultarTeclado(this);
         if (usuario.equals(usuarioIntroducido)) {
             if (contrasenya.equals(contrasenyaIntroducida)) {
 
@@ -55,37 +61,5 @@ public class LoginActivity extends AppCompatActivity {
     private void pasarA(Class clase) {
         Intent intent = new Intent(LoginActivity.this, clase);
         startActivity(intent);
-    }
-
-
-    public void mostrarDialogo(View v) {
-        LayoutInflater li = LayoutInflater.from(v.getContext());
-        View vistaDialogo = li.inflate(R.layout.registro, null);
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
-        alertDialogBuilder.setView(vistaDialogo);
-        final EditText usuarioTxt = vistaDialogo.findViewById(R.id.txtUsuarioRegistro);
-        final EditText contrasenyaTxt = vistaDialogo.findViewById(R.id.txtContrasenyaRegistro);
-        alertDialogBuilder.setCancelable(false)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        String usuario = usuarioTxt.getText().toString();
-                        String contrasenya = contrasenyaTxt.getText().toString();
-                        if (!usuario.equals("") && !contrasenya.equals("")) {
-                            editor.putString("usuario", usuario);
-                            editor.putString("contrasenya", contrasenya);
-                            editor.commit();
-                            Comodin.ocultarTeclado(loginAct);
-                            pasarA(MenuPrincipalActivity.class);
-                        }
-                    }
-                });
-        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
-        alertDialogBuilder.show();
     }
 }
